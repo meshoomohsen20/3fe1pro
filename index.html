@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>باكدج التجميل الاحترافي | Shopax شوب اكس</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;background:#fdf6fb;color:#333}
+/* STICKY HEADER */
+.sticky-header{position:sticky;top:0;z-index:999;background:#1a1a2e;padding:10px 16px;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.sticky-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.logo{font-size:18px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px}
+.header-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.hbadge{background:rgba(255,255,255,.12);color:#fff;font-size:11px;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;gap:4px}
+
+/* STICKY FOOTER */
+.sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:999;background:#1a1a2e;padding:10px 16px;box-shadow:0 -2px 16px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sticky-footer-info{display:flex;flex-direction:column}
+.sticky-footer-name{font-size:12px;color:#ce93d8;font-weight:600}
+.sticky-footer-price{font-size:18px;font-weight:700;color:#fff}
+.sticky-footer-btn{background:linear-gradient(90deg,#8e24aa,#c2185b);color:#fff;font-size:14px;font-weight:700;border:none;border-radius:30px;padding:12px 24px;cursor:pointer;font-family:'Segoe UI',Tahoma,Arial,sans-serif;white-space:nowrap;flex-shrink:0}
+body{padding-bottom:70px}
+.page-wrap{max-width:1100px;margin:0 auto;padding:32px 5%}
+
+/* PRODUCT */
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(142,36,170,.08);margin-bottom:32px}
+.img-left{display:flex;flex-direction:column;gap:12px}
+.main-img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid #f3e5f5}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.thumb{width:64px;height:64px;object-fit:cover;border-radius:8px;border:2px solid #eee;cursor:pointer;transition:.15s;flex-shrink:0}
+.thumb.active{border-color:#8e24aa}
+.thumb:hover{border-color:#ce93d8}
+.prod-right{display:flex;flex-direction:column;gap:14px}
+.pill{display:inline-block;background:linear-gradient(90deg,#8e24aa,#c2185b);color:#fff;font-size:11px;padding:4px 14px;border-radius:20px;font-weight:600;width:fit-content}
+.prod-title{font-size:24px;font-weight:700;color:#222;line-height:1.4}
+.prod-sub{font-size:13px;color:#777;line-height:1.8}
+.stars-row{display:flex;align-items:center;gap:8px}
+.stars{color:#f06292;font-size:15px}
+.stars-n{font-size:12px;color:#aaa}
+.free-ship{background:#e8f5e9;border-radius:8px;padding:8px 14px;font-size:13px;color:#2e7d32;display:flex;align-items:center;gap:6px}
+.stock{font-size:12px;color:#e53935;display:flex;align-items:center;gap:5px}
+
+/* PACKAGES */
+.pkg-title{font-size:14px;font-weight:700;color:#555;margin-bottom:10px}
+.packages{display:flex;flex-direction:column;gap:10px}
+.pkg{border:2px solid #eee;border-radius:12px;padding:14px 16px;cursor:pointer;transition:.2s;position:relative}
+.pkg:hover{border-color:#ce93d8}
+.pkg.active{border-color:#8e24aa;background:#fdf6ff}
+.pkg-badge{position:absolute;top:-10px;right:16px;background:linear-gradient(90deg,#f9a825,#f57f17);color:#fff;font-size:10px;padding:2px 10px;border-radius:10px;font-weight:700}
+.pkg-name{font-size:14px;font-weight:700;color:#333;margin-bottom:4px}
+.pkg-prices{display:flex;align-items:center;gap:8px}
+.pkg-new{font-size:22px;font-weight:700;color:#8e24aa}
+.pkg-old{font-size:13px;color:#bbb;text-decoration:line-through}
+.pkg-save{background:#fce4ec;color:#c2185b;font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600}
+.pkg-desc{font-size:11px;color:#aaa;margin-top:4px}
+
+.btn-main{width:100%;padding:15px;background:linear-gradient(90deg,#8e24aa,#c2185b);color:#fff;font-size:16px;font-weight:700;border:none;border-radius:30px;cursor:pointer;font-family:'Segoe UI',Tahoma,Arial,sans-serif;transition:.2s;display:block;text-align:center}
+.btn-main:hover{opacity:.9}
+.trust-row{display:flex;gap:8px;flex-wrap:wrap}
+.trust-item{font-size:11px;color:#888;background:#fafafa;border:1px solid #f0f0f0;border-radius:20px;padding:5px 10px}
+
+/* WHAT'S INSIDE */
+.devices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.device-card{background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 2px 12px rgba(142,36,170,.06);border:1px solid #f3e5f5}
+.device-icon{font-size:36px;margin-bottom:10px}
+.device-name{font-size:14px;font-weight:700;color:#8e24aa;margin-bottom:6px}
+.device-desc{font-size:12px;color:#aaa;line-height:1.6}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:32px}
+.feat{background:#fff;border-radius:12px;padding:16px;display:flex;align-items:flex-start;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.feat-icon{font-size:24px;flex-shrink:0}
+.feat h4{font-size:13px;font-weight:700;color:#333;margin-bottom:3px}
+.feat p{font-size:12px;color:#aaa;line-height:1.5}
+
+/* COUNTDOWN */
+.cd-card{background:linear-gradient(135deg,#8e24aa,#c2185b);border-radius:20px;padding:24px;text-align:center;margin-bottom:32px;color:#fff}
+.cd-title{font-size:16px;font-weight:700;margin-bottom:14px}
+.cd-row{display:flex;justify-content:center;gap:12px;margin-bottom:12px}
+.cd-box{background:rgba(255,255,255,.2);border-radius:12px;padding:12px 20px;min-width:70px;text-align:center;backdrop-filter:blur(4px)}
+.cd-num{font-size:28px;font-weight:700;display:block}
+.cd-lbl{font-size:11px;opacity:.85}
+.urgency{background:rgba(255,255,255,.15);border-radius:8px;padding:8px 16px;font-size:13px;display:inline-block}
+
+/* REVIEWS */
+.revs-card{background:#fff;border-radius:20px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:32px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{border:1px solid #f3e5f5;border-radius:12px;padding:16px}
+.rev-stars{color:#f06292;font-size:14px;margin-bottom:8px}
+.rev-text{font-size:12px;color:#888;line-height:1.6;margin-bottom:10px}
+.rev-name{font-size:11px;font-weight:600;color:#555}
+.rev-tick{font-size:10px;background:#e8f5e9;color:#2e7d32;padding:2px 7px;border-radius:10px;margin-left:4px}
+
+/* GUARANTEE */
+.guarantee{background:linear-gradient(135deg,#fce4ec,#f3e5f5);border-radius:20px;padding:20px 24px;display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.guarantee h4{font-size:15px;font-weight:700;color:#880e4f;margin-bottom:5px}
+.guarantee p{font-size:13px;color:#ad1457;line-height:1.6}
+
+/* FAQ */
+.faq-card{background:#fff;border-radius:20px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:32px}
+.faq-item{border-bottom:1px solid #f3e5f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:14px;font-weight:600;color:#333;margin-bottom:6px}
+.faq-a{font-size:13px;color:#aaa;line-height:1.6}
+
+/* FOOTER CTA */
+.footer-cta{background:linear-gradient(135deg,#8e24aa,#c2185b);border-radius:20px;padding:32px;text-align:center;margin-bottom:24px}
+.footer-cta h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:8px}
+.footer-cta p{font-size:14px;color:#f8bbd0;margin-bottom:20px}
+
+/* ORDER FORM */
+.form-wrap{background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(142,36,170,.1);border-top:4px solid #8e24aa;margin-bottom:32px}
+.form-title{font-size:20px;font-weight:700;color:#222;margin-bottom:6px;text-align:center}
+.form-sub{font-size:13px;color:#aaa;text-align:center;margin-bottom:24px}
+.order-summary{background:linear-gradient(135deg,#fdf6ff,#fce4ec);border-radius:12px;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.form-fields{display:flex;flex-direction:column;gap:14px}
+.field-label{font-size:13px;font-weight:600;color:#555;display:block;margin-bottom:5px}
+.field-input{width:100%;padding:12px 14px;border:1.5px solid #eee;border-radius:10px;font-size:14px;font-family:'Segoe UI',Tahoma,Arial,sans-serif;direction:rtl;outline:none;transition:.2s;background:#fff}
+.field-input:focus{border-color:#8e24aa}
+select.field-input{cursor:pointer}
+.submit-btn{width:100%;margin-top:20px;padding:15px;background:linear-gradient(90deg,#8e24aa,#c2185b);color:#fff;font-size:16px;font-weight:700;border:none;border-radius:30px;cursor:pointer;font-family:'Segoe UI',Tahoma,Arial,sans-serif;transition:.2s}
+.submit-btn:hover{opacity:.9}
+
+.sec-title{font-size:20px;font-weight:700;color:#222;margin-bottom:20px;text-align:center}
+.sec-title span{color:#8e24aa}
+.footer-bar{background:#4a148c;text-align:center;padding:14px;font-size:12px;color:#ce93d8}
+
+@media(max-width:700px){
+  .page-wrap{padding:12px 4%}
+  .product-grid{grid-template-columns:1fr;gap:0;padding:0;box-shadow:none;background:transparent}
+  .img-left{background:#fff;border-radius:16px 16px 0 0;padding:16px}
+  .prod-right{background:#fff;border-radius:0 0 16px 16px;padding:16px;margin-bottom:16px}
+  .prod-title{font-size:20px}
+  .nav-right{display:none}
+  .devices-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr}
+  .thumb{width:54px;height:54px}
+  .cd-box{min-width:60px;padding:10px 12px}
+  .cd-num{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<div class="sticky-header">
+  <div class="sticky-header-top">
+    <div class="logo">✨ Shopax شوب اكس</div>
+  </div>
+  <div class="header-badges">
+    <div class="hbadge">✅ دفع عند الاستلام</div>
+    <div class="hbadge">🛡️ ضمان الجودة</div>
+    <div class="hbadge">🚚 توصيل سريع</div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- PRODUCT -->
+  <div class="product-grid">
+    <div class="img-left">
+      <img id="mainImg" class="main-img" src="https://i.ibb.co/0Rcn8G2V/image-1.jpg" alt="باكدج شوب اكس">
+      <div class="thumbs">
+        <img class="thumb active" src="https://i.ibb.co/0Rcn8G2V/image-1.jpg" onclick="setImg(this,'https://i.ibb.co/0Rcn8G2V/image-1.jpg')">
+        <img class="thumb" src="https://i.ibb.co/BHWRB4m7/image-2.jpg" onclick="setImg(this,'https://i.ibb.co/BHWRB4m7/image-2.jpg')">
+        <img class="thumb" src="https://i.ibb.co/60Wq6sqF/image-3.jpg" onclick="setImg(this,'https://i.ibb.co/60Wq6sqF/image-3.jpg')">
+        <img class="thumb" src="https://i.ibb.co/7JMFmbcs/image-4.jpg" onclick="setImg(this,'https://i.ibb.co/7JMFmbcs/image-4.jpg')">
+        <img class="thumb" src="https://i.ibb.co/CpzCMHzc/image-5.jpg" onclick="setImg(this,'https://i.ibb.co/CpzCMHzc/image-5.jpg')">
+      </div>
+    </div>
+
+    <div class="prod-right">
+      <div class="pill">✨ باكدج حصري — متاح عند Shopax فقط</div>
+      <h1 class="prod-title">تجميعة التجميل الاحترافية<br>حواجب + وجه + جسم 💖</h1>
+      <p class="prod-sub">باكدج واحد يغطي كل احتياجاتك — دقة الحواجب، نعومة الوجه، وسرعة الجسم. أوفر من شراء كل جهاز لوحده وبجودة أصلية 100%.</p>
+      <div class="stars-row">
+        <span class="stars">★★★★★</span>
+        <span class="stars-n">4.9 (1,240 تقييم) · +3,500 طلب</span>
+      </div>
+      <div class="free-ship">🚚 <strong>الشحن مجاني</strong> لجميع محافظات مصر</div>
+      <div class="stock">⚠️ باقي <strong>12 باكدج فقط</strong> في المخزن!</div>
+
+      <button class="btn-main" onclick="scrollToForm()">🛒 اطلبي دلوقتي — الدفع عند الاستلام</button>
+
+      <div class="trust-row">
+        <span class="trust-item">🚚 شحن مجاني</span>
+        <span class="trust-item">🛡️ ضمان الجودة</span>
+        <span class="trust-item">🔄 استبدال مجاني</span>
+        <span class="trust-item">✅ أجهزة أصلية</span>
+        <span class="trust-item">⭐ +3500 عميلة</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="cd-card">
+    <div class="cd-title">⏳ العرض ينتهي خلال</div>
+    <div class="cd-row">
+      <div class="cd-box"><span class="cd-num" id="ch">05</span><span class="cd-lbl">ساعة</span></div>
+      <div class="cd-box"><span class="cd-num" id="cm">30</span><span class="cd-lbl">دقيقة</span></div>
+      <div class="cd-box"><span class="cd-num" id="cs">00</span><span class="cd-lbl">ثانية</span></div>
+    </div>
+    <div class="urgency">🔴 27 شخص بيشوفوا العرض ده دلوقتي — اطلبي قبل ما ينتهي!</div>
+  </div>
+
+  <!-- WHAT'S INSIDE -->
+  <div class="sec-title">إيه اللي جوه <span>الباكدج؟</span> 💖</div>
+  <div class="devices-grid">
+    <div class="device-card">
+      <div class="device-icon">✏️</div>
+      <div class="device-name">Flawless Brows</div>
+      <p class="device-desc">قلم تشذيب الحواجب بسن دقيق مطلي 18K — إضاءة مدمجة، لطيف على البشرة الحساسة، نتيجة مرتبة ونظيفة</p>
+    </div>
+    <div class="device-card">
+      <div class="device-icon">💄</div>
+      <div class="device-name">Flawless Facial</div>
+      <p class="device-desc">جهاز إزالة شعر الوجه بشكل روج — سري وسهل الحمل، يزيل الزغب بدون ألم وينعم البشرة للمكياج</p>
+    </div>
+    <div class="device-card">
+      <div class="device-icon">⚡</div>
+      <div class="device-name">Yes! 2-in-1</div>
+      <p class="device-desc">ماكينة جسم برأسين — رأس عريضة للسرعة ورأس دقيقة للمناطق الحساسة. مناسبة للساقين والذراعين وتحت الإبط</p>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="sec-title">ليه <span>Shopax</span> مختلفة؟</div>
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-icon">🎯</div><div><h4>دقة الحواجب</h4><p>سن 18K يعطيك تشذيب مثالي بدون أخطاء</p></div></div>
+    <div class="feat"><div class="feat-icon">🌸</div><div><h4>بدون ألم</h4><p>آمن للبشرة الحساسة — بدون شمع ولا فوضى</p></div></div>
+    <div class="feat"><div class="feat-icon">👜</div><div><h4>حجم صغير</h4><p>خفيف ومعاكي في البيت والسفر في أي وقت</p></div></div>
+    <div class="feat"><div class="feat-icon">⚡</div><div><h4>تشغيل فوري</h4><p>مفيش تعقيد — تشغيل بزرار واحد وتنظيف سهل</p></div></div>
+    <div class="feat"><div class="feat-icon">💰</div><div><h4>أوفر من الشراء المنفصل</h4><p>باكدج كامل بسعر أقل من شراء كل جهاز لوحده</p></div></div>
+    <div class="feat"><div class="feat-icon">✅</div><div><h4>أجهزة أصلية 100%</h4><p>متاح حصري عند Shopax — مع ضمان الجودة</p></div></div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="revs-card">
+    <div class="sec-title">آراء عملاء <span>Shopax</span> 💖</div>
+    <div class="rev-grid">
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">الباكدج ده أحسن حاجة اشتريتها! جهاز الحواجب دقيق جداً والوجه بقى ناعم زي الحرير 😍</p><div class="rev-name"><span class="rev-tick">✔ شراء موثق</span> نور م. — القاهرة</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">اشتريت قطعتين أنا وصاحبتي — التوصيل جه في يومين والأجهزة أصلية 100%. هنطلب تاني!</p><div class="rev-name"><span class="rev-tick">✔ شراء موثق</span> سارة أ. — الإسكندرية</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">جهاز الجسم Yes! 2-in-1 ده غير حياتي! سريع ومريح ومفيش ألم خالص 💜</p><div class="rev-name"><span class="rev-tick">✔ شراء موثق</span> منى ك. — الجيزة</div></div>
+    </div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee">
+    <div style="font-size:40px;flex-shrink:0">🛡️</div>
+    <div>
+      <h4>ضمان Shopax — جودة مضمونة أو استرداد كامل</h4>
+      <p>لو مش راضية عن المنتج لأي سبب — هنرجعلك فلوسك كاملة بدون أي أسئلة. ثقتك في Shopax أهم حاجة عندنا.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-card">
+    <div class="sec-title">أسئلة شائعة</div>
+    <div class="faq-item"><p class="faq-q">💬 الأجهزة أصلية ولا تقليد؟</p><p class="faq-a">أجهزة أصلية 100% متاحة حصري عند Shopax — مع ضمان الجودة الكاملة.</p></div>
+    <div class="faq-item"><p class="faq-q">💬 التوصيل بييجي لكل محافظات مصر؟</p><p class="faq-a">أيوه، بنوصل لجميع محافظات مصر خلال 2-4 أيام عمل بشحن مجاني تماماً.</p></div>
+    <div class="faq-item"><p class="faq-q">💬 مناسبة للبشرة الحساسة؟</p><p class="faq-a">أيوه، الأجهزة مصممة للاستخدام الآمن على البشرة العادية والحساسة — استخدميها على بشرة نظيفة وجافة.</p></div>
+    <div class="faq-item"><p class="faq-q">💬 طريقة الدفع إيه؟</p><p class="faq-a">كاش عند الاستلام فقط — مفيش دفع أونلاين مطلوب.</p></div>
+    <div class="faq-item"><p class="faq-q">💬 ينفع أطلب أكتر من باكدج؟</p><p class="faq-a">طبعاً! اختاري باكدج القطعتين أو 3 قطع للعيلة — أوفر سعر للكمية.</p></div>
+  </div>
+
+  <!-- FOOTER CTA -->
+  <div class="footer-cta">
+    <h2>اطلبي باكدجك دلوقتي 💖</h2>
+    <p>حواجب + وجه + جسم في باكدج واحد بسعر لا يتكرر</p>
+    <button class="btn-main" onclick="scrollToForm()" style="max-width:360px;margin:0 auto;display:block;background:#fff;color:#8e24aa;border:none;cursor:pointer">🛒 اطلبي دلوقتي — الدفع عند الاستلام</button>
+  </div>
+
+  <!-- PACKAGES SECTION -->
+  <div style="background:#fff;border-radius:20px;padding:24px;box-shadow:0 4px 24px rgba(142,36,170,.08);margin-bottom:32px">
+    <div class="sec-title" style="margin-bottom:8px">اختاري <span>باكدجك</span> 💖</div>
+    <div style="font-size:12px;color:#e53935;text-align:center;margin-bottom:16px">⚠️ باقي <strong>12 باكدج فقط</strong> في المخزن!</div>
+    <div class="packages">
+      <div class="pkg" id="pkg1" onclick="selectPkg(1,'قطعة واحدة','1,499','2,500','1,001')">
+        <div class="pkg-name">🔹 قطعة واحدة</div>
+        <div class="pkg-prices">
+          <span class="pkg-new">1,499 ج</span>
+          <span class="pkg-old">2,500 ج</span>
+          <span class="pkg-save">وفري 1,001 ج</span>
+        </div>
+        <div class="pkg-desc">Flawless Brows + Flawless Facial + Yes! 2-in-1</div>
+      </div>
+      <div class="pkg active" id="pkg2" onclick="selectPkg(2,'قطعتين','2,699','5,000','2,301')">
+        <div class="pkg-badge">⭐ الأوفر</div>
+        <div class="pkg-name">🔸 قطعتين</div>
+        <div class="pkg-prices">
+          <span class="pkg-new">2,699 ج</span>
+          <span class="pkg-old">5,000 ج</span>
+          <span class="pkg-save">وفري 2,301 ج</span>
+        </div>
+        <div class="pkg-desc">باكدج × 2 — هدية مثالية لك ولصديقتك</div>
+      </div>
+      <div class="pkg" id="pkg3" onclick="selectPkg(3,'3 قطع للعيلة','3,699','7,500','3,801')">
+        <div class="pkg-badge" style="background:linear-gradient(90deg,#e91e8c,#8e24aa)">👨‍👩‍👧 للعيلة</div>
+        <div class="pkg-name">💜 3 قطع للعيلة</div>
+        <div class="pkg-prices">
+          <span class="pkg-new">3,699 ج</span>
+          <span class="pkg-old">7,500 ج</span>
+          <span class="pkg-save">وفري 3,801 ج</span>
+        </div>
+        <div class="pkg-desc">باكدج × 3 — أوفر سعر للعيلة كلها</div>
+      </div>
+    </div>
+    <button class="btn-main" onclick="scrollToForm()" style="margin-top:16px">🛒 اطلبي دلوقتي — الدفع عند الاستلام</button>
+  </div>
+
+  <!-- ORDER FORM -->
+  <div id="orderForm" class="form-wrap">
+    <h2 class="form-title">📦 أكملي بيانات طلبك</h2>
+    <p class="form-sub">الدفع عند الاستلام — شحن مجاني لجميع محافظات مصر</p>
+
+    <div class="order-summary">
+      <div style="font-size:13px;color:#333">
+        🛍️ <strong>Shopax — باكدج التجميل</strong><br>
+        <span style="font-size:12px;color:#888">الباكدج: <strong id="summaryPkg">قطعتين</strong></span>
+      </div>
+      <div style="font-size:20px;font-weight:700;color:#8e24aa" id="summaryPrice">2,699 ج</div>
+    </div>
+
+    <div class="form-fields">
+      <div>
+        <label class="field-label">👤 الاسم الكامل</label>
+        <input id="fname" type="text" class="field-input" placeholder="أدخلي اسمك الكامل">
+      </div>
+      <div>
+        <label class="field-label">📱 رقم الموبايل</label>
+        <input id="fphone" type="tel" class="field-input" placeholder="01XXXXXXXXX">
+      </div>
+      <div>
+        <label class="field-label">🗺️ المحافظة</label>
+        <select id="fgov" class="field-input">
+          <option value="">— اختاري محافظتك —</option>
+          <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+          <option>الدقهلية</option><option>الشرقية</option><option>القليوبية</option>
+          <option>الغربية</option><option>المنوفية</option><option>البحيرة</option>
+          <option>كفر الشيخ</option><option>الإسماعيلية</option><option>بورسعيد</option>
+          <option>السويس</option><option>شمال سيناء</option><option>جنوب سيناء</option>
+          <option>الفيوم</option><option>بني سويف</option><option>المنيا</option>
+          <option>أسيوط</option><option>سوهاج</option><option>قنا</option>
+          <option>الأقصر</option><option>أسوان</option><option>البحر الأحمر</option>
+          <option>الوادي الجديد</option><option>مطروح</option><option>دمياط</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">📍 العنوان بالتفصيل</label>
+        <textarea id="faddress" rows="3" class="field-input" placeholder="الحي — اسم الشارع — رقم العمارة — أي تفاصيل إضافية"></textarea>
+      </div>
+    </div>
+
+    <button class="submit-btn" onclick="submitOrder()">✅ تأكيد الطلب</button>
+  </div>
+
+</div>
+
+<div class="footer-bar">© 2025 Shopax شوب اكس — جميع الحقوق محفوظة</div>
+
+<!-- STICKY FOOTER -->
+<div class="sticky-footer">
+  <div class="sticky-footer-info">
+    <span class="sticky-footer-name" id="stickyPkgName">باكدج قطعتين</span>
+    <span class="sticky-footer-price" id="stickyPkgPrice">2,699 ج</span>
+  </div>
+  <button class="sticky-footer-btn" onclick="scrollToForm()">🛒 اطلب الآن</button>
+</div>
+
+<script>
+// Package selection
+let selectedPkg = {num:2, name:'مسدس حجامة — قطعتين', price:'2,699'};
+
+function selectPkg(num, name, price, oldPrice, save){
+  document.querySelectorAll('.pkg').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pkg'+num).classList.add('active');
+  selectedPkg = {num, name, price};
+  document.getElementById('summaryPkg').textContent = name;
+  document.getElementById('summaryPrice').textContent = price + ' ج';
+  document.getElementById('stickyPkgName').textContent = name;
+  document.getElementById('stickyPkgPrice').textContent = price + ' ج';
+}
+
+// Image gallery
+function setImg(el,src){
+  document.getElementById('mainImg').src=src;
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Scroll to form
+function scrollToForm(){
+  document.getElementById('orderForm').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>document.getElementById('fname').focus(),600);
+}
+
+// Submit order
+async function submitOrder(){
+  const name    = document.getElementById('fname').value.trim();
+  const phone   = document.getElementById('fphone').value.trim();
+  const gov     = document.getElementById('fgov').value;
+  const address = document.getElementById('faddress').value.trim();
+  const btn     = document.querySelector('.submit-btn');
+
+  if(!name){alert('من فضلك أدخلي اسمك الكامل');document.getElementById('fname').focus();return;}
+  if(!phone){alert('من فضلك أدخلي رقم موبايلك');document.getElementById('fphone').focus();return;}
+  if(!gov){alert('من فضلك اختاري محافظتك');document.getElementById('fgov').focus();return;}
+  if(!address){alert('من فضلك أدخلي عنوانك بالتفصيل');document.getElementById('faddress').focus();return;}
+
+  btn.textContent='⏳ جاري تسجيل الطلب...';
+  btn.disabled=true;
+
+  const orderId = 'SPX-' + Date.now().toString().slice(-6);
+
+  // Google Sheet
+  const SHEET_URL='https://script.google.com/macros/s/AKfycbxheneDEjpO5yekzgmh8y_SBAsO5WEfjEpMj3XlMhktFBWjtgNEk2C5uLUQeqUPwod6mw/exec';
+  try{
+    await fetch(SHEET_URL,{
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name, phone,
+        address: gov + ' — ' + address,
+        color: selectedPkg.name,
+        size: selectedPkg.price + ' ج',
+        orderId
+      })
+    });
+  }catch(e){}
+
+  // Pixel Purchase
+  if(typeof fbq!=='undefined'){
+    fbq('track','Purchase',{
+      value: parseInt(selectedPkg.price.replace(',','')),
+      currency:'EGP',
+      content_name:'Shopax باكدج التجميل',
+      content_type:'product',
+      content_ids:[orderId],
+      contents:[{id:orderId,quantity:selectedPkg.num}],
+      order_id:orderId
+    });
+  }
+
+  // Go to thank you
+  window.location.href='thank-you.html?order='+orderId+'&pkg='+encodeURIComponent(selectedPkg.name)+'&price='+encodeURIComponent(selectedPkg.price);
+}
+
+// Countdown
+let secs=5*3600+30*60;
+setInterval(()=>{
+  if(secs<=0)return;secs--;
+  const h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=secs%60;
+  document.getElementById('ch').textContent=String(h).padStart(2,'0');
+  document.getElementById('cm').textContent=String(m).padStart(2,'0');
+  document.getElementById('cs').textContent=String(s).padStart(2,'0');
+},1000);
+</script>
+</body>
+</html>
