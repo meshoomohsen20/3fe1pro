@@ -372,6 +372,23 @@ select.field-input{cursor:pointer}
 // Package selection
 let selectedPkg = {num:0, name:'', price:''};
 
+// لو العميل عمل أوردر قبل كده — نخبي الفورم
+window.addEventListener('DOMContentLoaded', ()=>{
+  if(localStorage.getItem('order_done')){
+    const form = document.getElementById('orderForm');
+    if(form){
+      form.innerHTML = `
+        <div style="background:#e8f5e9;border-radius:16px;padding:32px;text-align:center">
+          <div style="font-size:48px;margin-bottom:12px">✅</div>
+          <h3 style="font-size:18px;font-weight:700;color:#2e7d32;margin-bottom:8px">تم تسجيل طلبك بالفعل!</h3>
+          <p style="font-size:13px;color:#555">سيتم التواصل معك قريباً. شكراً لثقتك في Shopax 💖</p>
+        </div>`;
+    }
+    const sticky = document.querySelector('.sticky-footer-btn');
+    if(sticky){ sticky.textContent='✅ تم الطلب'; sticky.disabled=true; sticky.style.opacity='.6'; }
+  }
+});
+
 function selectPkg(num, name, price, oldPrice, save){
   document.querySelectorAll('.pkg').forEach(p=>p.classList.remove('active'));
   document.getElementById('pkg'+num).classList.add('active');
@@ -435,13 +452,13 @@ async function submitOrder(){
   const orderId = 'SPX-' + Date.now().toString().slice(-6);
 
   // Google Sheet
-  const SHEET_URL='https://script.google.com/macros/s/AKfycbyzkPDtmmqZWLRRSDU6QoAzoMrJhF3GGA4wMU-aNetDS-maSZiPQq3hvHsTFOS-dC3d0w/exec';
+  const SHEET_URL='https://script.google.com/macros/s/AKfycbxTSHMdr3JUJiFNHznsuKbQF-pArF6iEn1CNurcBxVi5N0F_SF18-Oz8hjR0Z3zyemWcQ/exec';
   try{
     await fetch(SHEET_URL,{
       method:'POST', mode:'no-cors',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        price: selectedPkg.price + ' ج',
+        price: (parseInt(selectedPkg.price.replace(',','')) - 100),
         quantity: selectedPkg.num,
         name,
         province: gov,
@@ -451,6 +468,9 @@ async function submitOrder(){
       })
     });
   }catch(e){}
+
+  // حفظ إن الأوردر اتعمل — يمنع التكرار لو رجع للصفحة
+  localStorage.setItem('order_done','1');
 
   // Purchase بيتبعت من thank-you.html بس — مش هنا عشان ميتكررش
   window.location.href='thank-you.html?order='+orderId+'&pkg='+encodeURIComponent(selectedPkg.name)+'&price='+encodeURIComponent(selectedPkg.price)+'&val='+parseInt(selectedPkg.price.replace(',',''));

@@ -45,7 +45,6 @@ h1{font-size:24px;font-weight:700;color:#8e24aa;margin-bottom:10px}
   </div>
 
   <a href="index.html" class="back-btn">🛍️ تصفحي منتجاتنا الأخرى</a>
-  <p style="margin-top:14px;font-size:12px;color:#aaa">سيتم تحويلك تلقائياً خلال <span id="redirectCount">5</span> ثواني...</p>
 </div>
 <div class="footer">© 2025 Shopax شوب اكس — جميع الحقوق محفوظة</div>
 
@@ -88,15 +87,6 @@ if(!localStorage.getItem(firedKey)){
 
   localStorage.setItem(firedKey,'1');
 }
-
-// Redirect بعد 5 ثواني
-let countdown=5;
-const timer=setInterval(()=>{
-  countdown--;
-  const el=document.getElementById('redirectCount');
-  if(el)el.textContent=countdown;
-  if(countdown<=0){clearInterval(timer);window.location.replace('index.html');}
-},1000);
 </script>
 </body>
 </html>
