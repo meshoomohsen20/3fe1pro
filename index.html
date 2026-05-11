@@ -381,13 +381,19 @@ window.addEventListener('DOMContentLoaded', ()=>{
         <div style="background:#e8f5e9;border-radius:16px;padding:32px;text-align:center">
           <div style="font-size:48px;margin-bottom:12px">✅</div>
           <h3 style="font-size:18px;font-weight:700;color:#2e7d32;margin-bottom:8px">تم تسجيل طلبك بالفعل!</h3>
-          <p style="font-size:13px;color:#555">سيتم التواصل معك قريباً. شكراً لثقتك في Shopax 💖</p>
+          <p style="font-size:13px;color:#555;margin-bottom:16px">سيتم التواصل معك قريباً. شكراً لثقتك في Shopax 💖</p>
+          <button onclick="clearOrder()" style="background:none;border:1px solid #ccc;border-radius:20px;padding:6px 16px;font-size:11px;color:#aaa;cursor:pointer;font-family:'Cairo',sans-serif">طلب جديد؟ اضغط هنا</button>
         </div>`;
     }
     const sticky = document.querySelector('.sticky-footer-btn');
     if(sticky){ sticky.textContent='✅ تم الطلب'; sticky.disabled=true; sticky.style.opacity='.6'; }
   }
 });
+
+function clearOrder(){
+  localStorage.removeItem('order_done');
+  window.location.reload();
+}
 
 function selectPkg(num, name, price, oldPrice, save){
   document.querySelectorAll('.pkg').forEach(p=>p.classList.remove('active'));
