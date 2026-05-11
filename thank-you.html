@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تم استلام طلبك | Shopax شوب اكس</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<!-- TikTok Pixel -->
+<script>!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};ttq.load('D813ME3C77U471PHCDDG');ttq.page()}(window,document,'ttq');</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Cairo',sans-serif;direction:rtl;background:linear-gradient(160deg,#f3e5f5,#fce4ec);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
@@ -43,6 +45,7 @@ h1{font-size:24px;font-weight:700;color:#8e24aa;margin-bottom:10px}
   </div>
 
   <a href="index.html" class="back-btn">🛍️ تصفحي منتجاتنا الأخرى</a>
+  <p style="margin-top:14px;font-size:12px;color:#aaa">سيتم تحويلك تلقائياً خلال <span id="redirectCount">5</span> ثواني...</p>
 </div>
 <div class="footer">© 2025 Shopax شوب اكس — جميع الحقوق محفوظة</div>
 
@@ -51,21 +54,49 @@ const params=new URLSearchParams(window.location.search);
 const orderId=params.get('order')||'SPX-000000';
 const pkg=params.get('pkg')||'—';
 const price=params.get('price')||'—';
+const val=parseInt(params.get('val')||'0');
 
 document.getElementById('orderIdBox').textContent='🔖 رقم الطلب: '+orderId;
 document.getElementById('tyPkg').textContent=pkg;
 document.getElementById('tyPrice').textContent=price;
 
-if(typeof fbq!=='undefined'){
-  fbq('track','Purchase',{
-    value:parseInt(price.replace(',','')||0),
-    currency:'EGP',
-    content_name:'Shopax باكدج التجميل',
-    content_type:'product',
-    content_ids:[orderId],
-    order_id:orderId
-  });
+// حماية من التكرار بـ localStorage
+const firedKey = 'px_fired_' + orderId;
+if(!localStorage.getItem(firedKey)){
+
+  // Facebook Pixel - Purchase
+  if(typeof fbq!=='undefined'){
+    fbq('track','Purchase',{
+      value: val,
+      currency:'EGP',
+      content_name:'Shopax باكدج التجميل',
+      content_type:'product',
+      content_ids:[orderId],
+      order_id:orderId
+    });
+  }
+
+  // TikTok Pixel - PlaceAnOrder
+  if(typeof ttq!=='undefined'){
+    ttq.track('PlaceAnOrder',{
+      content_name:'Shopax باكدج التجميل — '+pkg,
+      content_id:orderId,
+      value: val,
+      currency:'EGP'
+    });
+  }
+
+  localStorage.setItem(firedKey,'1');
 }
+
+// Redirect بعد 5 ثواني
+let countdown=5;
+const timer=setInterval(()=>{
+  countdown--;
+  const el=document.getElementById('redirectCount');
+  if(el)el.textContent=countdown;
+  if(countdown<=0){clearInterval(timer);window.location.replace('index.html');}
+},1000);
 </script>
 </body>
 </html>
