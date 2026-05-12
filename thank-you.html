@@ -96,6 +96,23 @@ if(!localStorage.getItem(firedKey)){
     });
   }
 
+  // GTM DataLayer - Purchase
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'purchase',
+    ecommerce: {
+      transaction_id: orderId,
+      value: val,
+      currency: 'EGP',
+      items: [{
+        item_id: orderId,
+        item_name: 'Shopax — ' + pkg,
+        quantity: 1,
+        price: val
+      }]
+    }
+  });
+
   localStorage.setItem(firedKey,'1');
 }
 </script>

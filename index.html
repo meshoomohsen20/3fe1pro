@@ -433,6 +433,21 @@ function selectPkg(num, name, price, oldPrice, save){
       currency:'EGP'
     });
   }
+  // GTM DataLayer - ViewContent
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'view_item',
+    ecommerce: {
+      currency: 'EGP',
+      value: parseInt(price.replace(',','')),
+      items: [{
+        item_id: 'SPX-'+num,
+        item_name: 'Shopax — '+name,
+        quantity: num,
+        price: parseInt(price.replace(',',''))
+      }]
+    }
+  });
 }
 
 // Image gallery
@@ -475,6 +490,21 @@ async function submitOrder(){
       currency:'EGP'
     });
   }
+  // GTM DataLayer - InitiateCheckout
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'begin_checkout',
+    ecommerce: {
+      currency: 'EGP',
+      value: parseInt(selectedPkg.price.replace(',','')),
+      items: [{
+        item_id: 'SPX-'+selectedPkg.num,
+        item_name: selectedPkg.name,
+        quantity: selectedPkg.num,
+        price: parseInt(selectedPkg.price.replace(',',''))
+      }]
+    }
+  });
 
   const orderId = 'SPX-' + Date.now().toString().slice(-6);
 
